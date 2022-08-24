@@ -23,10 +23,19 @@ async function getUsage(argv) {
 
   let tables = [];
   for (const repo of repos) {
-    const formatedDate = dayjs()
+    const date = new Date();
+    const offset = date.getTimezoneOffset();
+    const formatedDate = dayjs(date.getTime() + offset * 1000 * 60)
       .subtract(argv.days, "days")
       .format("YYYY-MM-DD HH:mm:ss");
-    const created = argv.created || `>${formatedDate}+10:00`;
+
+    const tzH = Math.ceil(offset / 60);
+    const tzM = Math.floor(offset % 60);
+    const tzFormatted =
+      `${tzH < 0 ? "+" : "-"}${Math.abs(tzH).toString().padStart(2, "0")}` +
+      `:${Math.abs(tzM).toString().padStart(2, "0")}`;
+
+    const created = argv.created || `>${formatedDate}${tzFormatted}`;
 
     spinner.text = `[${repo.name}] Loading runs ${colors.dim(
       `(${created})`
