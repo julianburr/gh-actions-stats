@@ -1,6 +1,6 @@
 {
   "name": "gh-actions-stats",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Simple cli helper to get stats on your Github Action usage",
   "type": "module",
   "bin": {
