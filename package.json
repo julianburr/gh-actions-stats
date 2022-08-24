@@ -1,0 +1,27 @@
+{
+  "name": "gh-actions-stats",
+  "version": "1.0.0",
+  "description": "Simple cli helper to get stats on your Github Action usage",
+  "type": "module",
+  "bin": {
+    "gh-actions-stats": "index.js"
+  },
+  "engines": {
+		"node": ">=12.20"
+	},
+  "keywords": [],
+  "author": "Julian Burr <hello@julianburr.de>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "tsc --watch",
+    "build": "tsc"
+  },
+  "dependencies": {
+    "@octokit/rest": "^19.0.4",
+    "cli-table": "^0.3.11",
+    "colors": "^1.4.0",
+    "dayjs": "^1.11.5",
+    "ora": "^6.1.2",
+    "yargs": "^17.5.1"
+  }
+}
